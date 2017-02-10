@@ -1,0 +1,22 @@
+{
+  "name": "html200-ecomm",
+  "version": "1.0.0",
+  "description": "An ecommerce for scarfs.",
+  "main": "./js/script.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tamararivera/html200-ecomm.git"
+  },
+  "author": "Tamara Rivera F.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tamararivera/html200-ecomm/issues"
+  },
+  "homepage": "https://tamararivera.github.io/html200-ecomm/",
+  "devDependencies": {
+    "mocha": "^3.2.0"
+  }
+}
