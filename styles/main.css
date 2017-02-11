@@ -21,3 +21,20 @@ nav ul li a {
   position: absolute;
   right: 1rem;
 }
+
+.brand {
+  margin: 1rem;
+}
+
+.brand img {
+  
+  height: 10rem;
+}
+
+.brand h1 {
+  color: rgb(61, 140, 215);
+  display: inline-block;
+  font-size: 4rem;
+  width: 30%;
+  font-weight: bold;
+}
