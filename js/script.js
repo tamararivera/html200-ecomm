@@ -59,8 +59,7 @@ for (var i = 0; i < products.length; i++) {
   container.appendChild(item);
 }
 
-for (var i = 0; i < products.length; i++) {
-  console.log("Name: " + products[i].name);
-  console.log("Price: " + products[i].price);
-  console.log("--------");
+function filterProducts() {
+  event.preventDefault();
+  console.log(document.filterMe.filter.value);
 }
