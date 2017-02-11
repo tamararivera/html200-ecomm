@@ -46,8 +46,8 @@ main {
 }
 
 aside {
-  width: 25%;
-  padding-right: 1rem;
+  margin-top: 3.5rem; /*the height of the title on the right plus its margin*/
+  width: 15%;
 }
 
 aside form * {
@@ -68,4 +68,37 @@ aside input[type="submit"] {
   color: white;
   font-weight: bold;
   padding: 0.4rem;
+}
+
+h2 {
+  font-weight: bold;
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+main section {
+  width: 85%;
+}
+
+h4 {
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-align: center;
+  margin: 1rem auto;
+}
+
+#item-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.item {
+  width: 28.3333%;
+  border: 1px solid black;
+  margin: 0 0.5rem 0.5rem 0;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
 }
