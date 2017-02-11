@@ -102,3 +102,7 @@ h4 {
   padding-right: 1rem;
   padding-bottom: 1rem;
 }
+
+.item img{
+  width: 100%;
+}

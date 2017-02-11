@@ -39,7 +39,7 @@ var products = [
     "name": "Etro Paisley-Print Silk",
     "price": 249.99,
     "description": "Luxurious silk scarf with subtle paisley pattern. 100% silk",
-    "imageTitle": "etro.jpg"
+    "imageTitle": "etro.png"
   },
   {
     "name": "Ashby Twill",
@@ -54,8 +54,9 @@ for (var i = 0; i < products.length; i++) {
   var item = document.createElement("div");
   item.className = "item";
   item.innerHTML = "<h4>" + products[i].name + "</h4>";
+  item.innerHTML += "<img src='images/" + products[i].imageTitle + "' alt='" + products[i].name + " image'>";
   item.innerHTML += "<p>" + products[i].description + "</p>";
-  item.innerHTML += "<p>" + products[i].price + "</p>";
+  item.innerHTML += "<p>$" + products[i].price + "</p>";
   container.appendChild(item);
 }
 
