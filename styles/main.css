@@ -1,0 +1,23 @@
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+nav ul{
+  background: rgb(61, 140, 215);
+  display: flex;
+  justify-content: space-around;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  color: white;
+  font-weight: bold;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+}
+
+.cart-info {
+  position: absolute;
+  right: 1rem;
+}
