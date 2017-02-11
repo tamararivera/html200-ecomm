@@ -38,3 +38,34 @@ nav ul li a {
   width: 30%;
   font-weight: bold;
 }
+
+main {
+  display: flex;
+  width: 100%;
+  margin: 1rem;
+}
+
+aside {
+  width: 25%;
+  padding-right: 1rem;
+}
+
+aside form * {
+  display: block;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+aside form label {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+aside input[type="submit"] {
+  background: rgb(61, 140, 215);
+  border: rgb(61, 140, 215);
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  padding: 0.4rem;
+}
