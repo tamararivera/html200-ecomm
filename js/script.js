@@ -50,7 +50,7 @@ var products = [
 ];
 
 var container = document.getElementById("item-container");
-for (var i in products) {
+for (var i = 0; i < products.length; i++) {
   var item = document.createElement("div");
   item.className = "item";
   item.innerHTML = "<h4>" + products[i].name + "</h4>";
@@ -59,7 +59,7 @@ for (var i in products) {
   container.appendChild(item);
 }
 
-for (var i in products) {
+for (var i = 0; i < products.length; i++) {
   console.log("Name: " + products[i].name);
   console.log("Price: " + products[i].price);
   console.log("--------");
