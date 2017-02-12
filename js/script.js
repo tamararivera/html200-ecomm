@@ -64,3 +64,17 @@ function filterProducts() {
   event.preventDefault();
   console.log(document.filterMe.filter.value);
 }
+
+document.getElementById("cart-info").onclick = function () {
+  var popup = document.getElementById("my-cart");
+  toggleVisibility(popup);
+};
+
+function toggleVisibility(element) {
+  var visibility = element.style.visibility;
+  if (visibility == 'visible') {
+    element.style.visibility = 'hidden';
+  } else {
+    element.style.visibility = 'visible';
+  }
+}
