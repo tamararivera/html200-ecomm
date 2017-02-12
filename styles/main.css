@@ -19,7 +19,7 @@ nav ul li a {
 
 .cart-info {
   position: absolute;
-  right: 1rem;
+  right: 2rem;
 }
 
 .brand {
@@ -105,4 +105,22 @@ h4 {
 
 .item img{
   width: 100%;
+}
+
+#my-cart {
+    position: absolute;
+    right: 1rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background: #edeef8;
+}
+
+.arrow-up {
+  width: 0; 
+  height: 0; 
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid #edeef8;
+  position: absolute;
+  right: 1rem;
+  top: -5px;
 }
