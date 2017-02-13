@@ -78,3 +78,34 @@ function toggleVisibility(element) {
     element.style.visibility = 'visible';
   }
 }
+
+function whichAnimationEvent(){
+    var t; 
+    var animations = {
+      'animation':'animationend',
+      'OAnimation':'oAnimationEnd',
+      'MozAnimation':'animationend',
+      'WebkitAnimation':'webkitAnimationEnd'
+    };
+
+    for(t in animations){
+        if(badge.style[t] !== undefined ){
+            return animations[t];
+        }
+    }
+}
+
+/*Later this should make the badge jump on update*/
+function jumpingBadge() {
+  var badge = document.getElementById("badge");
+  badge.onmouseover = function () {
+  badge.className += " bounce";
+  };
+
+  var animationEvent = whichAnimationEvent();
+  var bool = animationEvent && badge.addEventListener(animationEvent, function() {
+    badge.className = "fa-stack badge";
+  });
+}
+
+jumpingBadge();
