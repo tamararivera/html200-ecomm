@@ -109,3 +109,21 @@ function jumpingBadge() {
 }
 
 jumpingBadge();
+
+
+var cart = [
+  {
+    "name": "Wool Cable Knit",
+    "price": 49.99,
+    "description": "Warm yourself with this women's natural cable knit scarf, crafted from 100% Merino wool. Imported.",
+    "imageTitle": "wool-cable.jpeg"
+  },
+  {
+    "name": "Northern Lights",
+    "price": 29.99,
+    "description": "Handmade by women in Agra, sales provide medical and educational support in this remote area of India. Crinkly 100% cotton.",
+    "imageTitle": "northern-lights.jpg"
+  }
+];
+
+document.getElementById("badge-number").innerHTML = cart.length;
