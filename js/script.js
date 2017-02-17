@@ -126,4 +126,20 @@ var cart = [
   }
 ];
 
-document.getElementById("badge-number").innerHTML = cart.length;
+var number = document.querySelectorAll(".number-of-items-in-cart");
+/*I know they are exactly 2*/
+number[0].innerHTML = cart.length;
+number[1].innerHTML = cart.length;
+
+var cartList = document.getElementById("cart-items-list");
+var total = 0;
+for (var i = 0; i < cart.length; i ++) {
+  var item = document.createElement("li");
+  item.className = "item-in-cart";
+  item.innerHTML = "<div class='name'>" + cart[i].name + "</div>";
+  item.innerHTML += "<div class='price'>" + cart[i].price + "</div>";
+  total += cart[i].price;
+  cartList.appendChild(item);
+}
+
+document.getElementById("cart-total").innerHTML += total;

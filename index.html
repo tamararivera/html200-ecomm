@@ -22,7 +22,7 @@
         <li id="cart-info">
           <span class="fa-stack badge" id="badge">
             <i class="fa fa-circle-o fa-stack-2x"></i>
-            <strong class="fa-stack-1x" id="badge-number"></strong>
+            <strong class="fa-stack-1x number-of-items-in-cart"></strong>
           </span>
           <i class="fa fa-shopping-cart" aria-hidden="true"></i>
         </li>
@@ -30,15 +30,13 @@
     </nav>
     <div id="my-cart">
       <div class="arrow-up"></div>
-      <p>1 item in the cart</p>
+      <p><span class="number-of-items-in-cart"></span> item(s) in the cart</p>
+      <div class="separator"></div>
       <ul id="cart-items-list">
-        <li>
-          <p>Wool Cable Knit</p>
-          <p>$49.99</p>
-        </li>
       </ul>
-      <p>Total: $49.99</p>
-      <button>Checkout</button>
+      <div class="separator"></div>
+      <p id="cart-total">Total: $</p>
+      <button id="cart-checkout">Checkout</button>
     </div>
     <div class="brand">
       <img src="images/logo-scarfcat.png" alt="Our logo, a cat wearing a scarf">
