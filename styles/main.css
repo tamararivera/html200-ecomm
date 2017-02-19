@@ -96,6 +96,7 @@ h4 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin-left: 0.5rem;
 }
 
 .item {
@@ -105,20 +106,21 @@ h4 {
   padding-left: 1rem;
   padding-right: 1rem;
   padding-bottom: 1rem;
+  min-width: 240px;
 }
 
 .item img{
-  width: 100%;
+  max-width: 100%;
 }
 
 #my-cart {
-    position: absolute;
-    right: 1rem;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    background: #edeef8;
-    visibility: hidden;
-    width: 33.33%;
-    padding: 1rem;
+  position: absolute;
+  right: 1rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background: #edeef8;
+  visibility: hidden;
+  width: 33.33%;
+  padding: 1rem;
 }
 
 .arrow-up {
@@ -133,14 +135,14 @@ h4 {
 }
 
 @keyframes bounce {
-	0%, 20%, 50%, 80%, 100% {
-     transform: translateY(0);
+  0%, 20%, 50%, 80%, 100% {
+   transform: translateY(0);
   }
-	40% {
-     transform: translateY(-1rem);
+  40% {
+   transform: translateY(-1rem);
   }
-	60% {
-     transform: translateY(-0.5rem);
+  60% {
+   transform: translateY(-0.5rem);
   }
 }
 
