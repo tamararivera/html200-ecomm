@@ -126,6 +126,9 @@ var cart = [
   }
 ];
 
+function updatedCart() {
+  
+}
 var number = document.querySelectorAll(".number-of-items-in-cart");
 /*I know they are exactly 2*/
 number[0].innerHTML = cart.length;
