@@ -86,6 +86,7 @@ main {
   display: flex;
   width: 100%;
   padding: 1rem;
+  box-sizing: border-box;
 }
 
 @media (max-width: 700px) {
@@ -185,9 +186,9 @@ h4 {
   }
 }
 
-@media (max-width: 715px) {
+@media (max-width: 748px) {
   .item {
-    width: 42%;
+    width: 41%;
   }
 }
 
