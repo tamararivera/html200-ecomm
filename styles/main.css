@@ -35,12 +35,26 @@ nav ul li a {
   width: 8%;
 }
 
+@media (max-width: 632px) {
+  .brand img {
+    width: auto;
+    min-height: 6rem;
+  }
+}
+
 .brand h1 {
   color: rgb(61, 140, 215);
   display: inline-block;
   font-size: 4rem;
-  width: 30%;
+  width: 50%;
   font-weight: bold;
+}
+
+@media (max-width: 725px) {
+  .brand h1 {
+    width: 71%;
+    font-size: 3rem;
+  }
 }
 
 main {
@@ -106,7 +120,6 @@ h4 {
   padding-left: 1rem;
   padding-right: 1rem;
   padding-bottom: 1rem;
-  min-width: 240px;
 }
 
 .item img{
