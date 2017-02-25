@@ -85,12 +85,25 @@ nav ul li a {
 main {
   display: flex;
   width: 100%;
-  margin: 1rem;
+  padding: 1rem;
+}
+
+@media (max-width: 700px) {
+  main {
+    flex-direction: column;
+  }
 }
 
 aside {
   margin-top: 3.5rem; /*the height of the title on the right plus its margin*/
   width: 15%;
+}
+
+@media (max-width: 700px) {
+  aside {
+    width: auto;
+    margin-top: 0;
+  }
 }
 
 aside form * {
@@ -124,6 +137,13 @@ main section {
   width: 85%;
 }
 
+@media (max-width: 700px) {
+  main section {
+    width: auto;
+    margin-top: 1rem;
+  }
+}
+
 h4 {
   font-weight: bold;
   font-size: 1.1rem;
@@ -138,13 +158,44 @@ h4 {
   margin-left: 0.5rem;
 }
 
+@media (max-width: 700px) {
+  #item-container {
+    margin-left: 0;
+  }
+}
+
 .item {
-  width: 28.3333%;
+  width: 29.3333%;
   border: 1px solid black;
   margin: 0 0.5rem 0.5rem 0;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-bottom: 1rem;
+}
+
+@media (max-width: 1245px) {
+  .item {
+    width: 28.3333%;
+  }
+}
+
+@media (max-width: 998px) {
+  .item {
+    width: 26.3333%;
+  }
+}
+
+@media (max-width: 715px) {
+  .item {
+    width: 42%;
+  }
+}
+
+@media (max-width: 525px) {
+  .item {
+    width: 100%;
+    margin: 0;
+  }
 }
 
 .item img{
