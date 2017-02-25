@@ -82,6 +82,12 @@ nav ul li a {
   }
 }
 
+@media (min-width: 1394px) {
+  .brand h1 {
+    width: 41%;
+  }
+}
+
 main {
   display: flex;
   width: 100%;
@@ -174,7 +180,13 @@ h4 {
   padding-bottom: 1rem;
 }
 
-@media (max-width: 1245px) {
+@media (min-width: 1400px) {
+  .item {
+    width: 21%;
+  }
+}
+
+@media (max-width: 1276px) {
   .item {
     width: 28.3333%;
   }
