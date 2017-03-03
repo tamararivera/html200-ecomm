@@ -232,6 +232,7 @@ h4 {
   visibility: hidden;
   width: 33.33%;
   padding: 1rem;
+  z-index: 2;
 }
 
 .arrow-up {
