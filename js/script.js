@@ -65,6 +65,13 @@ var products = [
   }
 ];
 
+
+function clickEvent(id) {
+    return function () {
+        addToCart(id);
+    };
+}
+
 var container = document.getElementById("item-container");
 for (var i = 0; i < products.length; i++) {
   var item = document.createElement("div");
@@ -77,11 +84,8 @@ for (var i = 0; i < products.length; i++) {
   item.innerHTML += "<p>$" + products[i].price + "</p>";
   var button = document.createElement("button");
   button.className = "hidden";
-  button.id = i;
-  button.addEventListener('click', function (e) {
-    addToCart(e.currentTarget.id);});
+  button.addEventListener('click', clickEvent(i));
   button.textContent = "Add to my cart";
-  //item.innerHTML += "<button class='hidden' onclick='addToCart(" + products[i].name. + "," + products[i].price + ")'>Add to my cart</button>";
   item.appendChild(button);
   container.appendChild(item);
 }
@@ -96,32 +100,15 @@ document.getElementById("cart-info").onclick = function () {
   toggleVisibility(popup);
 };
 
-function toggleVisibility(element) {
-  var visibility = element.style.visibility;
-  if (visibility == 'visible') {
-    element.style.visibility = 'hidden';
-  } else {
-    element.style.visibility = 'visible';
-  }
+var cart = [];
+
+function addToCart(i) {
+  cart.push({"name": products[i].name,
+             "price":products[i].price
+            });
+  updatedCart();
 }
 
-function whichAnimationEvent(){
-    var t; 
-    var animations = {
-      'animation':'animationend',
-      'OAnimation':'oAnimationEnd',
-      'MozAnimation':'animationend',
-      'WebkitAnimation':'webkitAnimationEnd'
-    };
-
-    for(t in animations){
-        if(badge.style[t] !== undefined ){
-            return animations[t];
-        }
-    }
-}
-
-/*Later this should make the badge jump on update*/
 function jumpingBadge() {
   var badge = document.getElementById("badge");
   badge.className += " bounce";
@@ -130,15 +117,6 @@ function jumpingBadge() {
   var bool = animationEvent && badge.addEventListener(animationEvent, function() {
     badge.className = "fa-stack badge";
   });
-}
-
-var cart = [];
-
-function addToCart(i) {
-  cart.push({"name": products[i].name,
-             "price":products[i].price
-            });
-  updatedCart();
 }
 
 function updatedCart() {
@@ -165,4 +143,29 @@ function updatedCart() {
 
   document.getElementById("cart-total").innerHTML = "Total: $" + total.toFixed(2);
   jumpingBadge();
+}
+
+function whichAnimationEvent(){
+    var t; 
+    var animations = {
+      'animation':'animationend',
+      'OAnimation':'oAnimationEnd',
+      'MozAnimation':'animationend',
+      'WebkitAnimation':'webkitAnimationEnd'
+    };
+
+    for(t in animations){
+        if(badge.style[t] !== undefined ){
+            return animations[t];
+        }
+    }
+}
+
+function toggleVisibility(element) {
+  var visibility = element.style.visibility;
+  if (visibility == 'visible') {
+    element.style.visibility = 'hidden';
+  } else {
+    element.style.visibility = 'visible';
+  }
 }
