@@ -75,7 +75,14 @@ for (var i = 0; i < products.length; i++) {
                           "src='" + products[i].imageTitle + "' alt='" + products[i].name + " image'>";
   item.innerHTML += "<p>" + products[i].description + "</p>";
   item.innerHTML += "<p>$" + products[i].price + "</p>";
-  item.innerHTML += "<button class='hidden'>Add to my cart</button>";
+  var button = document.createElement("button");
+  button.className = "hidden";
+  button.id = i;
+  button.addEventListener('click', function (e) {
+    addToCart(e.currentTarget.id);});
+  button.textContent = "Add to my cart";
+  //item.innerHTML += "<button class='hidden' onclick='addToCart(" + products[i].name. + "," + products[i].price + ")'>Add to my cart</button>";
+  item.appendChild(button);
   container.appendChild(item);
 }
 
@@ -117,9 +124,7 @@ function whichAnimationEvent(){
 /*Later this should make the badge jump on update*/
 function jumpingBadge() {
   var badge = document.getElementById("badge");
-  badge.onmouseover = function () {
   badge.className += " bounce";
-  };
 
   var animationEvent = whichAnimationEvent();
   var bool = animationEvent && badge.addEventListener(animationEvent, function() {
@@ -127,19 +132,14 @@ function jumpingBadge() {
   });
 }
 
-jumpingBadge();
+var cart = [];
 
-
-var cart = [
-  {
-    "name": "Wool Cable Knit",
-    "price": 49.99
-  },
-  {
-    "name": "Northern Lights",
-    "price": 29.99
-  }
-];
+function addToCart(i) {
+  cart.push({"name": products[i].name,
+             "price":products[i].price
+            });
+  updatedCart();
+}
 
 function updatedCart() {
   var number = document.querySelectorAll(".number-of-items-in-cart");
@@ -148,6 +148,11 @@ function updatedCart() {
   number[1].innerHTML = cart.length;
 
   var cartList = document.getElementById("cart-items-list");
+  
+  while (cartList.firstChild) {
+    cartList.removeChild(cartList.firstChild);
+  }
+  
   var total = 0;
   for (var i = 0; i < cart.length; i ++) {
     var item = document.createElement("li");
@@ -158,7 +163,6 @@ function updatedCart() {
     cartList.appendChild(item);
   }
 
-  document.getElementById("cart-total").innerHTML += total;
+  document.getElementById("cart-total").innerHTML = "Total: $" + total.toFixed(2);
+  jumpingBadge();
 }
-
-updatedCart();
