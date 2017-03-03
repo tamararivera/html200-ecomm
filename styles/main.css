@@ -178,6 +178,7 @@ h4 {
   padding-left: 1rem;
   padding-right: 1rem;
   padding-bottom: 1rem;
+  position: relative;
 }
 
 @media (min-width: 1400px) {
@@ -207,12 +208,20 @@ h4 {
 @media (max-width: 525px) {
   .item {
     width: 100%;
-    margin: 0;
+    margin-right: 0;
   }
 }
 
 .item img{
   width: 100%;
+}
+
+.item:hover .hidden {
+  display: block;
+}
+
+.hidden {
+  display: none;
 }
 
 #my-cart {
@@ -281,8 +290,7 @@ h4 {
   text-align: end;
 }
 
-#cart-checkout {
-  float: right;
+button {
   background: rgb(61, 140, 215);
   border: rgb(61, 140, 215);
   border-radius: 5px;
@@ -290,4 +298,17 @@ h4 {
   font-weight: bold;
   padding: 0.4rem;
   margin-top: 0.5rem;
+}
+
+button.hidden {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  font-size: 1rem;
+}
+
+#cart-checkout {
+  float: right;
 }

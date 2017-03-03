@@ -75,6 +75,7 @@ for (var i = 0; i < products.length; i++) {
                           "src='" + products[i].imageTitle + "' alt='" + products[i].name + " image'>";
   item.innerHTML += "<p>" + products[i].description + "</p>";
   item.innerHTML += "<p>$" + products[i].price + "</p>";
+  item.innerHTML += "<button class='hidden'>Add to my cart</button>";
   container.appendChild(item);
 }
 
