@@ -3,9 +3,9 @@ document.getElementById("cart-info").onclick = function () {
   toggleVisibility(popup);
 };
 
-function clickEvent(id) {
+function clickEvent(name, price) {
     return function () {
-        addToCart(id);
+        addToCart(name, price);
     };
 }
 
@@ -22,7 +22,7 @@ function populateProducts() {
     item.innerHTML += "<p>$" + products[i].price + "</p>";
     var button = document.createElement("button");
     button.className = "hidden";
-    button.addEventListener('click', clickEvent(i));
+    button.addEventListener('click', clickEvent(products[i].name, products[i].price));
     button.textContent = "Add to my cart";
     item.appendChild(button);
     container.appendChild(item);
@@ -30,33 +30,58 @@ function populateProducts() {
 }
 populateProducts();
 
-function filterProducts() {
+function sortProducts() {
   event.preventDefault();
-  console.log(document.filterMe.filter.value);
+  var container = document.getElementById("item-container");
+  var sortBy = document.sortMe.sort.value;
+  if(sortBy == "name") {
+    sortByName();
+    cleanElement(container);
+    populateProducts();
+  }
+  else if(sortBy == "price"){
+    sortByPrice();
+    cleanElement(container);
+    populateProducts();
+  }
+  
+  
+}
+
+function sortByName() {
+  products.sort(function(a, b) {
+    return a.name.toLowerCase() > b.name.toLowerCase();
+  });
+}
+
+function sortByPrice() {
+  products.sort(function(a, b) {
+    return a.price - b.price;
+  });
 }
 
 var cart = [];
 
-function checkName(product) {
+function checkName(name) {
   return function(item) {
-    return item.name == product.name;
+    return item.name == name;
   };
 }
 
-function findProductIndex(product, array) {
-  return array.findIndex(checkName(product));
+function findProductIndex(name, array) {
+  return array.findIndex(checkName(name));
 }
 
 
-function addToCart(i) {
-  var index = findProductIndex(products[i], cart);
-  if( index != -1) {
+function addToCart(name, price) {
+  var index = findProductIndex(name, cart);
+  if(index != -1) {
     cart[index].qty ++; 
   }
   else {
-    cart.push({"name": products[i].name,
+    cart.push({"name": name,
              "qty": 1,
-             "price":products[i].price
+             "price": price
               });
   }
   
