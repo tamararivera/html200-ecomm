@@ -102,10 +102,14 @@ document.getElementById("cart-info").onclick = function () {
 
 var cart = [];
 
-function findProductIndex(product, array) {
-  return array.findIndex(function(item) {
+function checkName(product) {
+  return function(item) {
     return item.name == product.name;
-  });
+  };
+}
+
+function findProductIndex(product, array) {
+  return array.findIndex(checkName(product));
 }
 
 
@@ -134,17 +138,31 @@ function jumpingBadge() {
   });
 }
 
+function numberOfItems(array) {
+  var items = 0;
+  for (var i = 0; i < array.length; i++) {
+    items += array[i].qty;
+  }
+  return items;
+}
+
+function cleanElement(element) {
+  while (element.firstChild) {
+    element.removeChild(element.firstChild);
+  }
+}
+
 function updatedCart() {
   var number = document.querySelectorAll(".number-of-items-in-cart");
   /*I know they are exactly 2*/
-  number[0].innerHTML = cart.length;
-  number[1].innerHTML = cart.length;
+  var items = numberOfItems(cart);
+  number[0].innerHTML = items;
+  number[1].innerHTML = items;
 
   var cartList = document.getElementById("cart-items-list");
   
-  while (cartList.firstChild) {
-    cartList.removeChild(cartList.firstChild);
-  }
+  cleanElement(cartList);
+  
   
   var total = 0;
   for (var i = 0; i < cart.length; i ++) {
