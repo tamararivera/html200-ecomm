@@ -102,10 +102,25 @@ document.getElementById("cart-info").onclick = function () {
 
 var cart = [];
 
+function findProductIndex(product, array) {
+  return array.findIndex(function(item) {
+    return item.name == product.name;
+  });
+}
+
+
 function addToCart(i) {
-  cart.push({"name": products[i].name,
+  var index = findProductIndex(products[i], cart);
+  if( index != -1) {
+    cart[index].qty ++; 
+  }
+  else {
+    cart.push({"name": products[i].name,
+             "qty": 1,
              "price":products[i].price
-            });
+              });
+  }
+  
   updatedCart();
 }
 
@@ -136,8 +151,9 @@ function updatedCart() {
     var item = document.createElement("li");
     item.className = "item-in-cart";
     item.innerHTML = "<div class='name'>" + cart[i].name + "</div>";
-    item.innerHTML += "<div class='price'>" + cart[i].price + "</div>";
-    total += cart[i].price;
+    item.innerHTML += "<div class='qty'>" + cart[i].qty + " x </div>";
+    item.innerHTML += "<div class='price'>$" + cart[i].price + "</div>";
+    total += cart[i].price * cart[i].qty;
     cartList.appendChild(item);
   }
 

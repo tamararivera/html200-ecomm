@@ -278,12 +278,16 @@ h4 {
 }
 
 .item-in-cart .name {
-  width: 75%;
+  width: 70%;
   font-weight: bold;
 }
 
+.item-in-cart .qty {
+  width: 10%
+}
+
 .item-in-cart .price {
-  width: 25%;
+  width: 20%;
 }
 
 #cart-total {
