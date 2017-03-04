@@ -88,6 +88,21 @@ function addToCart(name, price) {
   updatedCart();
 }
 
+function removeFromCart(name) {
+  var index = findProductIndex(name, cart);
+  if(index != -1) {
+    var quantity = cart[index].qty;
+    if(quantity > 1) {
+      cart[index].qty --; 
+    }
+    else {
+      cart.splice(index, 1);
+    }
+  }
+  
+  updatedCart();
+}
+
 function numberOfItems(array) {
   var items = 0;
   for (var i = 0; i < array.length; i++) {
@@ -96,44 +111,67 @@ function numberOfItems(array) {
   return items;
 }
 
+function removeEvent(name) {
+  return function() {
+    removeFromCart(name);
+  };
+}
+
 function updatedCart() {
   var number = document.querySelectorAll(".number-of-items-in-cart");
   /*I know they are exactly 2*/
   var items = numberOfItems(cart);
   number[0].innerHTML = items;
   number[1].innerHTML = items;
-  var emptyMessage = document.getElementById("emptyMessage");
-  emptyMessage.className = "hidden";
   
+  var emptyMessage = document.getElementById("emptyMessage");
   var itemsMessage = document.getElementById("itemsMessage");
-  itemsMessage.className = "";
   
   var cartList = document.getElementById("cart-items-list");
-  
   cleanElement(cartList);
-  
   var total = 0;
-  for (var i = 0; i < cart.length; i ++) {
-    var item = document.createElement("li");
-    item.className = "item-in-cart";
-    item.innerHTML = "<div class='name'>" + cart[i].name + "</div>";
-    item.innerHTML += "<div class='qty'>" + cart[i].qty + " x </div>";
-    item.innerHTML += "<div class='price'>$" + cart[i].price + "</div>";
-    total += cart[i].price * cart[i].qty;
-    cartList.appendChild(item);
-  }
+  
+  if(cart.length > 0) {
+    emptyMessage.className = "hidden";
+    itemsMessage.className = "";
+    
+    for (var i = 0; i < cart.length; i ++) {
+      var item = document.createElement("li");
+      item.className = "item-in-cart";
+      item.innerHTML = "<div class='name'>" + cart[i].name + "</div>";
+      item.innerHTML += "<div class='qty'>" + cart[i].qty + " x </div>";
+      item.innerHTML += "<div class='price'>$" + cart[i].price + "</div>";
+      var remove = document.createElement("a");
+      remove.textContent = "Remove";
+      remove.href = "#";
+      remove.addEventListener('click', removeEvent(cart[i].name));
+      item.appendChild(remove);
 
+      total += cart[i].price * cart[i].qty;
+      cartList.appendChild(item);
+    }
+  }
+  else {
+    emptyMessage.className = "";
+    itemsMessage.className = "hidden";
+  }
   document.getElementById("cart-total").innerHTML = "Total: $" + total.toFixed(2);
   jumpingBadge();
 }
 
 function jumpingBadge() {
   var badge = document.getElementById("badge");
-  badge.className = "fa-stack badge";
-  badge.className += " bounce";
-
-  var animationEvent = whichAnimationEvent();
-  var bool = animationEvent && badge.addEventListener(animationEvent, function() {
+  if(cart.length > 0) {
     badge.className = "fa-stack badge";
-  });
+    badge.className += " bounce";
+
+    var animationEvent = whichAnimationEvent();
+    var bool = animationEvent && badge.addEventListener(animationEvent, function() {
+      badge.className = "fa-stack badge";
+    });
+  }
+  else {
+    badge.className = "hidden";
+  }
+  
 }
