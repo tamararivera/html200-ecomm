@@ -77,11 +77,15 @@ function updatedCart() {
   var items = numberOfItems(cart);
   number[0].innerHTML = items;
   number[1].innerHTML = items;
-
+  var emptyMessage = document.getElementById("emptyMessage");
+  emptyMessage.className = "hidden";
+  
+  var itemsMessage = document.getElementById("itemsMessage");
+  itemsMessage.className = "";
+  
   var cartList = document.getElementById("cart-items-list");
   
   cleanElement(cartList);
-  
   
   var total = 0;
   for (var i = 0; i < cart.length; i ++) {
@@ -100,6 +104,7 @@ function updatedCart() {
 
 function jumpingBadge() {
   var badge = document.getElementById("badge");
+  badge.className = "fa-stack badge";
   badge.className += " bounce";
 
   var animationEvent = whichAnimationEvent();

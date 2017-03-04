@@ -5,11 +5,10 @@
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://use.fontawesome.com/728dc040fb.js"></script>
   <link rel="stylesheet" href="styles/reset.css">
   <link rel="stylesheet" href="styles/main.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-  
-  <script src="https://use.fontawesome.com/728dc040fb.js"></script>
 </head>
 
 <body>
@@ -20,7 +19,7 @@
         <li><a href="#">Gloves</a></li>
         <li><a href="#">Scarves</a></li>
         <li id="cart-info">
-          <span class="fa-stack badge" id="badge">
+          <span class="fa-stack badge hidden" id="badge">
             <i class="fa fa-circle-o fa-stack-2x"></i>
             <strong class="fa-stack-1x number-of-items-in-cart"></strong>
           </span>
@@ -30,7 +29,8 @@
     </nav>
     <div id="my-cart">
       <div class="arrow-up"></div>
-      <p><span class="number-of-items-in-cart"></span> item(s) in the cart</p>
+      <p class="hidden" id="itemsMessage"><span class="number-of-items-in-cart"></span> item(s) in the cart</p>
+      <p id="emptyMessage">Your cart is empty</p>
       <div class="separator"></div>
       <ul id="cart-items-list">
       </ul>
