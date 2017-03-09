@@ -30,7 +30,7 @@ function populateProducts() {
 }
 populateProducts();
 
-function sortProducts() {
+function sortProducts(event) {
   event.preventDefault();
   var container = document.getElementById("item-container");
   var sortBy = document.sortMe.sort.value;
