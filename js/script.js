@@ -9,6 +9,8 @@ function clickEvent(name, price) {
     };
 }
 
+var filteredProducts;
+
 function populateProducts(myArray) {
   myArray = (typeof myArray === 'undefined') ? products : myArray;
   var container = document.getElementById("item-container");
@@ -35,28 +37,29 @@ function sortProducts(event) {
   event.preventDefault();
   var container = document.getElementById("item-container");
   var sortBy = document.sortMe.sort.value;
+  
   if(sortBy == "name") {
-    sortByName();
+    sortByName(filteredProducts);
     cleanElement(container);
-    populateProducts();
+    populateProducts(filteredProducts);
   }
   else if(sortBy == "price"){
-    sortByPrice();
+    sortByPrice(filteredProducts);
     cleanElement(container);
-    populateProducts();
+    populateProducts(filteredProducts);
   }
   
   
 }
 
-function sortByName() {
-  products.sort(function(a, b) {
+function sortByName(myArray) {
+  myArray.sort(function(a, b) {
     return a.name.toLowerCase() > b.name.toLowerCase();
   });
 }
 
-function sortByPrice() {
-  products.sort(function(a, b) {
+function sortByPrice(myArray) {
+  myArray.sort(function(a, b) {
     return a.price - b.price;
   });
 }
@@ -65,7 +68,7 @@ function filterProducts(event) {
   event.preventDefault();
   var min = document.filterMe.min.value;
   var max = document.filterMe.max.value;
-  var filteredProducts = products.filter(betweenPrices(min, max));
+  filteredProducts = products.filter(betweenPrices(min, max));
   var container = document.getElementById("item-container");
   
   cleanElement(container);
