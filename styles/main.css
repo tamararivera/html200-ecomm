@@ -124,6 +124,26 @@ aside form label {
   font-size: 1.2rem;
 }
 
+aside label {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+aside .fieldset {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+aside .fieldset label {
+  font-weight: normal;
+  font-size: 1rem;
+}
+/*weird name*/
+.half {
+  width: 47%;
+}
+
 aside input[type="submit"] {
   background: rgb(61, 140, 215);
   border: rgb(61, 140, 215);

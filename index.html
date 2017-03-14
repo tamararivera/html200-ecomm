@@ -58,6 +58,20 @@
         </select>
         <input type="submit" value="Sort">
       </form>
+      <form name="filterMe" onsubmit="filterProducts(event);">
+        <div class="fieldset">
+          <div class="label">Filter By Price:</div>
+          <div class="half">
+            <label for="min">Min</label>
+            <input id="min" name="min" />
+          </div>
+          <div class="half">
+            <label for="max">Max</label>
+            <input id="max" name="max" />
+          </div>
+        </div>
+        <input type="submit" value="Filter">
+      </form>
     </aside>
 
     <section>
