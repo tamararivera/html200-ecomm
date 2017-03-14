@@ -9,20 +9,21 @@ function clickEvent(name, price) {
     };
 }
 
-function populateProducts() {
+function populateProducts(myArray) {
+  myArray = (typeof myArray === 'undefined') ? products : myArray;
   var container = document.getElementById("item-container");
-  for (var i = 0; i < products.length; i++) {
+  for (var i = 0; i < myArray.length; i++) {
     var item = document.createElement("div");
     item.className = "item";
-    item.innerHTML = "<h4>" + products[i].name + "</h4>";
-    item.innerHTML += "<img srcset='" + products[i].imageSrcSet + "' " +
-                            "sizes='" + products[i].imageSizes + "' " +
-                            "src='" + products[i].imageTitle + "' alt='" + products[i].name + " image'>";
-    item.innerHTML += "<p>" + products[i].description + "</p>";
-    item.innerHTML += "<p>$" + products[i].price + "</p>";
+    item.innerHTML = "<h4>" + myArray[i].name + "</h4>";
+    item.innerHTML += "<img srcset='" + myArray[i].imageSrcSet + "' " +
+                            "sizes='" + myArray[i].imageSizes + "' " +
+                            "src='" + myArray[i].imageTitle + "' alt='" + myArray[i].name + " image'>";
+    item.innerHTML += "<p>" + myArray[i].description + "</p>";
+    item.innerHTML += "<p>$" + myArray[i].price + "</p>";
     var button = document.createElement("button");
     button.className = "hidden";
-    button.addEventListener('click', clickEvent(products[i].name, products[i].price));
+    button.addEventListener('click', clickEvent(myArray[i].name, myArray[i].price));
     button.textContent = "Add to my cart";
     item.appendChild(button);
     container.appendChild(item);
@@ -58,6 +59,23 @@ function sortByPrice() {
   products.sort(function(a, b) {
     return a.price - b.price;
   });
+}
+
+function filterProducts(event) {
+  event.preventDefault();
+  var min = document.filterMe.min.value;
+  var max = document.filterMe.max.value;
+  var filteredProducts = products.filter(betweenPrices(min, max));
+  var container = document.getElementById("item-container");
+  
+  cleanElement(container);
+  populateProducts(filteredProducts);
+}
+
+function betweenPrices(min, max, product){
+  return function (product) {
+    return ((!min || product.price) >= min && (!max || product.price <= max));
+  };
 }
 
 var cart = [];
