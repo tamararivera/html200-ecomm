@@ -237,11 +237,19 @@ h4 {
 }
 
 .item:hover .hidden {
-  display: block;
+  /*display: block;*/
+  visibility: visible;
+  opacity: 1;
 }
 
 .hidden {
-  display: none;
+  /*display: none;*/
+  visibility: hidden;
+  opacity: 0;
+}
+
+.add-to-cart {
+  transition: visibility 0s, opacity 0.5s linear;
 }
 
 #my-cart {

@@ -24,7 +24,7 @@ function populateProducts(myArray) {
     item.innerHTML += "<p>" + myArray[i].description + "</p>";
     item.innerHTML += "<p>$" + myArray[i].price + "</p>";
     var button = document.createElement("button");
-    button.className = "hidden";
+    button.className = "hidden add-to-cart";
     button.addEventListener('click', clickEvent(myArray[i].name, myArray[i].price));
     button.textContent = "Add to my cart";
     item.appendChild(button);
