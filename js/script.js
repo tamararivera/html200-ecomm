@@ -9,7 +9,7 @@ function clickEvent(name, price) {
     };
 }
 
-var filteredProducts;
+var filteredProducts = products;
 
 function populateProducts(myArray) {
   myArray = (typeof myArray === 'undefined') ? products : myArray;
